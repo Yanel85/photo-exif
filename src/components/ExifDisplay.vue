@@ -77,8 +77,8 @@ const translatedKeys = {
     'ImageDescription': '图像描述',
     'Copyright': '版权信息',
     'Artist': '作者',
-    'DateTime': '修改时间',
-    'DateTimeOriginal': '原始时间',
+    'ModifyDate': '修改时间',
+    'CreateDate': '原始时间',
     'Make': '相机制造商',
     'Model': '相机型号',
     'LensMake': '镜头制造商',
@@ -87,7 +87,6 @@ const translatedKeys = {
     'Orientation': '图像方向',
     'BodySerialNumber': '机身序列号',
     'ExposureTime': '曝光时间',
-    'FNumber': '光圈值',
     'ISO': 'ISO 感光度',
     'ExposureBiasValue': '曝光补偿',
     'MeteringMode': '测光模式',
@@ -97,7 +96,6 @@ const translatedKeys = {
     'FocalLength': '焦距',
     'FocalLengthIn35mmFormat': '35mm 等效焦距',
     'LensSpecification': '镜头规格',
-    'ColorSpace': '色彩空间',
     'WhiteBalance': '白平衡',
     'Saturation': '饱和度',
     'Sharpness': '锐度',
@@ -105,9 +103,6 @@ const translatedKeys = {
     'SceneCaptureType': '场景拍摄类型',
     'Image Width': '图像宽度',
     'Image Height': '图像高度',
-    'ResolutionUnit': '分辨率单位',
-    'XResolution': '水平分辨率',
-    'YResolution': '垂直分辨率',
     'GPSLatitude': '纬度',
     'GPSLongitude': '经度',
     'GPSAltitude': '海拔',
@@ -117,6 +112,7 @@ const translatedKeys = {
     'ThumbnailOffset': '缩略图偏移',
     'ThumbnailLength': '缩略图长度',
     'ThumbnailJPEGInterchangeFormat': '缩略图 JPEG 格式',
-    'ThumbnailJPEGInterchangeFormatLength': '缩略图 JPEG 长度'
+    'ThumbnailJPEGInterchangeFormatLength': '缩略图 JPEG 长度',
+    'Color Space': '色彩空间'
 };
 </script>
