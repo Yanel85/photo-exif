@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div v-if="loading" class="text-center text-gray-600">加载中...</div>
+    <div v-if="loading" class="text-center text-gray-600">loading...</div>
     <div v-if="error" class="text-red-500 mt-4 text-center">{{ error }}</div>
 </template>
 

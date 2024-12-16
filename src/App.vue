@@ -30,11 +30,11 @@
 
     const handleImageLoaded = (tags) => {
         const groupedData = {
-            "基本信息": {},
-            "相机设置": {},
-            "曝光信息": {},
-            "GPS 信息": {},
-            "其他信息": {}
+            "BasicInfo": {},
+            "CameraSettings": {},
+            "ExposureInfo": {},
+            "GpsInfo": {},
+            "OtherInfo": {}
         };
 
         for (const tag in tags) {
@@ -55,7 +55,7 @@
                     'FileType'
                 ].includes(tag)
             ) {
-                groupedData["基本信息"][tag] = value;
+                groupedData["BasicInfo"][tag] = value;
             } else if (
                 [
                     'Make',
@@ -70,7 +70,7 @@
                     'LensSpecification'
                 ].includes(tag)
             ) {
-                groupedData["相机设置"][tag] = value;
+                groupedData["CameraSettings"][tag] = value;
             } else if (
                 [
                     'ExposureTime',
@@ -88,13 +88,13 @@
                     'Color Space'
                 ].includes(tag)
             ) {
-                groupedData["曝光信息"][tag] = value;
+                groupedData["ExposureInfo"][tag] = value;
             } else if (
                 ['GPSLatitude', 'GPSLongitude', 'GPSAltitude', 'GPSTimeStamp', 'GPSDateStamp', 'GPSAltitudeRef'].includes(tag)
             ) {
-                groupedData["GPS 信息"][tag] = value;
+                groupedData["GpsInfo"][tag] = value;
             } else {
-                groupedData["其他信息"][tag] = value;
+                groupedData["OtherInfo"][tag] = value;
             }
 
         }
