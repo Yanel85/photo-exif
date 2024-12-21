@@ -19,7 +19,7 @@
                         </tr>
                         <tr v-for="(value, key) in group" :key="key" :class="{ 'bg-gray-50': $index % 2 === 1 }">
                             <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900 text-right w-32">
-                                {{ isEnglish ? key : translatedKeys[key] }}:
+                                {{ isEnglish ? key : translatedKeys[key] || key }}:
                             </td>
                             <td class="px-6 py-3  text-sm text-gray-700" style="overflow-x:auto; max-width: 400px;">
                                 {{ formatValue(value) }}
