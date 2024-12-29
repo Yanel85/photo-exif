@@ -22,7 +22,7 @@
                                 {{ isEnglish ? key : translatedKeys[key] || key }}:
                             </td>
                             <td class="px-6 py-3  text-sm text-gray-700" style="overflow-x:auto; max-width: 400px;">
-                                {{ formatValue(value) }}
+                                {{ formatValue(value, key) }}
                             </td>
                         </tr>
                     </tbody>
@@ -59,19 +59,35 @@
         }
     }, { deep: true, immediate: true })
 
-    const formatValue = (value) => {
-        const stringValue = String(value)
-        if (typeof stringValue === 'string') {
-            // 移除字符串首尾的 [ 和 ]
-            let formattedValue = stringValue.replace(/^\[|\]$/g, '');
-            // 移除字符串首尾的 "
-            formattedValue = formattedValue.replace(/^"|"$/g, '');
-            return formattedValue;
+    const formatValue = (value, key) => {
+        //const stringValue = String(value)
+        //if (typeof stringValue === 'string') {
+        // 移除字符串首尾的 [ 和 ]
+        // let formattedValue = stringValue.replace(/^\[|\]$/g, '');
+        // 移除字符串首尾的 "
+        // formattedValue = formattedValue.replace(/^"|"$/g, '');
+        // return formattedValue;
+        //}
+        if (!Array.isArray(value) || value.length === 0) {
+            return value // 处理空数组或非数组的情况
+        }
+        const firstElement = value[0];
+
+        if (typeof firstElement === 'string') {
+            return firstElement;
+        }
+
+        if (typeof firstElement === 'number' && typeof value[1] === 'number') {
+            if (key == 'ExposureTime') {
+                return `${value[0]}/${value[1]}`;
+            } else {
+                return (firstElement / value[1]).toString(); // 数字计算并返回字符串
+            }
         }
         if (Array.isArray(value)) {
             return value.map(item => formatValue(item))
         }
-        return value;
+
     };
     const translatedKeys = {
         "BasicInfo": "基本信息",
@@ -79,7 +95,7 @@
         "ExposureInfo": "曝光信息",
         "GpsInfo": "GPS 信息",
         "OtherInfo": "其他信息",
-        'FileType': '图片格式',
+        'format': '图片格式',
         'ImageDescription': '图像描述',
         'Copyright': '版权信息',
         'Artist': '作者',
@@ -93,15 +109,14 @@
         'Orientation': '图像方向',
         'BodySerialNumber': '机身序列号',
         'ExposureTime': '曝光时间',
-        'ISO': 'ISO 感光度',
+        'ISOSpeedRatings': 'ISO 感光度',
         'ExposureBiasValue': '曝光补偿',
         'MeteringMode': '测光模式',
         'Flash': '闪光灯',
         'ShutterSpeedValue': '快门速度',
-        'ApertureValue': '光圈值',
-        'FocalLength': '焦距',
-        'FocalLengthIn35mmFormat': '35mm 等效焦距',
-        'LensSpecification': '镜头规格',
+        'FNumber': '光圈值',
+        'FocalLengthIn35mmFilm': '35mm 等效焦距',
+        'LensInfo': '镜头规格',
         'WhiteBalance': '白平衡',
         'Saturation': '饱和度',
         'Sharpness': '锐度',
@@ -111,7 +126,7 @@
         'Image Height': '图像高度',
         'GPSLatitude': '纬度',
         'GPSLongitude': '经度',
-        'GPSAltitude': '海拔',
+        'GPSAltitude': '海拔(m)',
         'GPSTimeStamp': '时间',
         'GPSDateStamp': '日期',
         'GPSAltitudeRef': '海拔参考',
@@ -119,6 +134,7 @@
         'ThumbnailLength': '缩略图长度',
         'ThumbnailJPEGInterchangeFormat': '缩略图 JPEG 格式',
         'ThumbnailJPEGInterchangeFormatLength': '缩略图 JPEG 长度',
-        'Color Space': '色彩空间'
+        'Color Space': '色彩空间',
+        'RawFileName': '文件名'
     };
 </script>

@@ -220,7 +220,7 @@
             }
             emit('imageLoaded', tags);
         } catch (err) {
-            console.error("解析 EXIF 信息失败:", err);
+            //console.error("解析 EXIF 信息失败:", err);
             error.value = `解析 EXIF 信息失败：${err.message || '请检查图片格式或URL'}`;
             emit('error', error.value);
         } finally {
@@ -251,7 +251,7 @@
                 const blob = await response.blob();
                 processImage(blob);
             } catch (err) {
-                console.error("加载 URL 失败:", err);
+                //console.error("加载 URL 失败:", err);
                 error.value = `加载 URL 失败: ${err.message || '请检查URL是否正确'}`;
                 emit('error', error.value);
             } finally {

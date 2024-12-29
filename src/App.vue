@@ -52,7 +52,8 @@
                     'ThumbnailLength',
                     'ThumbnailJPEGInterchangeFormat',
                     'ThumbnailJPEGInterchangeFormatLength',
-                    'FileType'
+                    'format',
+                    'RawFileName'
                 ].includes(tag)
             ) {
                 groupedData["BasicInfo"][tag] = value;
@@ -65,21 +66,20 @@
                     'Software',
                     'Orientation',
                     'BodySerialNumber',
-                    'FocalLength',
-                    'FocalLengthIn35mmFormat',
-                    'LensSpecification'
+                    'FocalLengthIn35mmFilm',
+                    'LensInfo'
                 ].includes(tag)
             ) {
                 groupedData["CameraSettings"][tag] = value;
             } else if (
                 [
                     'ExposureTime',
-                    'ISO',
+                    'ISOSpeedRatings',
                     'ExposureBiasValue',
                     'MeteringMode',
                     'Flash',
                     'ShutterSpeedValue',
-                    'ApertureValue',
+                    'FNumber',
                     'WhiteBalance',
                     'Saturation',
                     'Sharpness',
