@@ -78,7 +78,6 @@
                     'ExposureBiasValue',
                     'MeteringMode',
                     'Flash',
-                    'ShutterSpeedValue',
                     'FNumber',
                     'WhiteBalance',
                     'Saturation',
