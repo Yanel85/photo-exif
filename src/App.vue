@@ -11,7 +11,6 @@
             {{ isEnglish ? "Please upload the original photo." : "请上传原图, 通过微信或QQ转发的照片EXIF信息可能会变化或丢失。" }}
             <br>
         </p>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2710408585614522" crossorigin="anonymous"></script>
         <ImageLoader @imageLoaded="handleImageLoaded" @error="handleError" />
         <ExifDisplay :exifData="exifData" />
     </div>
