@@ -147,35 +147,44 @@
 
     const initMap = (latitude, longitude) => {
         if (latitude && longitude) {
+            // 使用原有的 WGS->GCJ 转换
             const gcj = wgsToGcj(longitude, latitude);
-            const position = new AMap.LngLat(gcj.lng, gcj.lat);
+            // 确保腾讯地图 SDK 已加载
+            if (typeof window.TMap === 'undefined') return;
+
+            const center = new TMap.LatLng(gcj.lat, gcj.lng);
             // 创建地图实例
             if (mapContainer.value) {
-                map = new AMap.Map(mapContainer.value, {
+                map = new TMap.Map(mapContainer.value, {
                     zoom: 9,
-                    center: position,
-                    resizeEnable: true
-                });
-                const markerContent = '' +
-                    '<div class="custom-content-marker">' +
-                    '   <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png" style=" width: 20px;">' +
-                    '</div>';
-
-                const marker = new AMap.Marker({
-                    position: position,
-                    content: markerContent,
-                    offset: new AMap.Pixel(-13, -30)
+                    center: center,
+                    pitch: 0,
+                    rotation: 0,
                 });
 
-                map.add(marker);
+                // 使用 MultiMarker 添加标注
+                const marker = new TMap.MultiMarker({
+                    map: map,
+                    styles: {
+                        marker: new TMap.MarkerStyle({
+                            width: 20,
+                            height: 30,
+                            anchor: { x: 10, y: 30 },
+                        }),
+                    },
+                    geometries: [
+                        {
+                            position: center,
+                            id: 'marker',
+                        },
+                    ],
+                });
             }
-        }
-        else {
+        } else {
             if (map) {
-                map = null
+                map = null;
             }
         }
-
     };
 
 
@@ -263,9 +272,10 @@
 
     onMounted(() => {
         const script = document.createElement('script');
-        script.src = `https://webapi.amap.com/maps?v=2.0&key=24cb4cde49e64ef387234391a59cb375yanchun`;
+        // 请替换下面的 YOUR_TENCENT_KEY 为你的腾讯地图 Key
+        script.src = `https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77`;
         script.async = true;
-        script.defer = true
+        script.defer = true;
         document.head.appendChild(script);
     });
     onUnmounted(() => {
