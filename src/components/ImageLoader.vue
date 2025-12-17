@@ -263,7 +263,7 @@
 
     onMounted(() => {
         const script = document.createElement('script');
-        script.src = `https://webapi.amap.com/maps?v=2.0&key=24cb4cde49e64ef387234391a59cb375`;
+        script.src = `https://webapi.amap.com/maps?v=2.0&key=24cb4cde49e64ef387234391a59cb375yanchun`;
         script.async = true;
         script.defer = true
         document.head.appendChild(script);
